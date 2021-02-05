@@ -1,5 +1,7 @@
 import React from 'react'
 const person=(props)=>{
+
+
     return (
     <div>
     <p>this is {props.names} from {props.place} and my age is {Math.floor(Math.random() *50) } </p>
