@@ -1,0 +1,13 @@
+.Person{
+    width: 60%;
+    border: 2px solid #ccc;
+    margin:  10px auto ;
+    padding: 2px ;
+    box-shadow: 2px 3px #eeee;
+}
+.table{
+    border: 2px solid #4858;
+    padding: auto;
+    width: 30%;
+    box-shadow: 2px 3px #eeee;
+}
