@@ -5,6 +5,7 @@ import Dynamicchange from "./Components/Dynamicchange";
 import Listassignment from "./Components/Listassignment";
 import Char from "./Components/Char";
 import ColorChange from "./Components/ColorChange";
+import StyledComponents from "./Components/StyledComponents";
 class App extends React.Component {
   state = {
     person: [
@@ -75,6 +76,10 @@ class App extends React.Component {
       border: "1px solid blue",
       color: "white",
       textAlign: "center",
+      ":hover": {
+        backgroundColor: "yellowgreen",
+        color: "black",
+      },
     };
     const word = this.state.userinput.split("").map((ch, index) => {
       return (
@@ -103,6 +108,10 @@ class App extends React.Component {
         </div>
       );
       style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "maroon",
+        color: "yellow",
+      };
     }
     const classes = [];
     if (this.state.person.length >= 2) {
@@ -132,6 +141,7 @@ class App extends React.Component {
         {word}
         {/* <Dynamicchange changed={this.onchangeHandler} val={this.state} /> */}
         <ColorChange />
+        <StyledComponents />
       </div>
       //React.createElement('div',{className:App},React.createElement('h1',null,'this is how our normal html gets compiled'));
     );

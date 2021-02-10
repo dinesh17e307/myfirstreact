@@ -4,10 +4,19 @@
     margin:  10px auto ;
     padding: 2px ;
     box-shadow: 2px 3px #eeee;
+    -webkit-text-fill-color:violet;
 }
 .table{
     border: 2px solid #4858;
     padding: auto;
     width: 30%;
     box-shadow: 2px 3px #eeee;
+}
+.per{
+    background-color: violet;
+    color: black;
+    font-size: xx-large;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
 }

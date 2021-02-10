@@ -1,5 +1,5 @@
 import React from "react";
-
+import Radium from "radium";
 function Char(props) {
   const style = {
     display: "inline-block",
@@ -7,6 +7,10 @@ function Char(props) {
     textAlign: "center",
     margin: "16px",
     border: "1px solid black",
+    cursor: "pointer",
+    ":hover": {
+      backgroundColor: "yellowgreen",
+    },
   };
   return (
     <div style={style} onClick={props.delete}>
@@ -15,4 +19,4 @@ function Char(props) {
   );
 }
 
-export default Char;
+export default Radium(Char);
