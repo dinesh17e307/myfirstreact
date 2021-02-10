@@ -8,15 +8,15 @@ import Char from "./Components/Char";
 import ColorChange from "./Components/ColorChange";
 import StyledComponents from "./Components/StyledComponents";
 const Stylebutton = styled.button`
-  background-color: green;
+  background-color: ${(props) => (props.alt ? "red" : "green")};
   padding: 10px;
   border: 1px solid blue;
   color: white;
   text-align: center;
 
   &:hover {
-    background-color: yellowgreen;
-    color: black;
+    background-color: ${(props) => (props.alt ? "maroon" : "yellowgreen")};
+    color: ${(props) => (props.alt ? "yellow" : "black")};
   }
 `;
 class App extends React.Component {
@@ -121,11 +121,11 @@ class App extends React.Component {
           })}
         </div>
       );
-      style.backgroundColor = "red";
-      style[":hover"] = {
-        backgroundColor: "maroon",
-        color: "yellow",
-      };
+      // style.backgroundColor = "red";
+      // style[":hover"] = {
+      //   backgroundColor: "maroon",
+      //   color: "yellow",
+      // };
     }
     const classes = [];
     if (this.state.person.length >= 2) {
@@ -140,7 +140,7 @@ class App extends React.Component {
         <h1 className={classes.join(" ")}>
           hi welcome ,this is my first app going to develop
         </h1>
-        <Stylebutton onClick={this.toggleHandler}>
+        <Stylebutton alt={this.state.isshown} onClick={this.toggleHandler}>
           toggle the person
         </Stylebutton>
         {persons}
