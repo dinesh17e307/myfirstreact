@@ -1,11 +1,24 @@
 import "./App.css";
 import React from "react";
+import styled from "styled-components";
 import Person from "./Components/Person";
 import Dynamicchange from "./Components/Dynamicchange";
 import Listassignment from "./Components/Listassignment";
 import Char from "./Components/Char";
 import ColorChange from "./Components/ColorChange";
 import StyledComponents from "./Components/StyledComponents";
+const Stylebutton = styled.button`
+  background-color: green;
+  padding: 10px;
+  border: 1px solid blue;
+  color: white;
+  text-align: center;
+
+  &:hover {
+    background-color: yellowgreen;
+    color: black;
+  }
+`;
 class App extends React.Component {
   state = {
     person: [
@@ -71,11 +84,12 @@ class App extends React.Component {
   };
   render() {
     const style = {
-      backgroundColor: "green",
+      backgroundColor: " green",
       padding: "10px",
       border: "1px solid blue",
       color: "white",
       textAlign: "center",
+
       ":hover": {
         backgroundColor: "yellowgreen",
         color: "black",
@@ -126,9 +140,9 @@ class App extends React.Component {
         <h1 className={classes.join(" ")}>
           hi welcome ,this is my first app going to develop
         </h1>
-        <button style={style} onClick={this.toggleHandler}>
+        <Stylebutton onClick={this.toggleHandler}>
           toggle the person
-        </button>
+        </Stylebutton>
         {persons}
         <hr />
         <input
