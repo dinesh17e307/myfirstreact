@@ -4,6 +4,7 @@ import Person from "./Components/Person";
 import Dynamicchange from "./Components/Dynamicchange";
 import Listassignment from "./Components/Listassignment";
 import Char from "./Components/Char";
+import ColorChange from "./Components/ColorChange";
 class App extends React.Component {
   state = {
     person: [
@@ -68,6 +69,13 @@ class App extends React.Component {
     });
   };
   render() {
+    const style = {
+      backgroundColor: "green",
+      padding: "10px",
+      border: "1px solid blue",
+      color: "white",
+      textAlign: "center",
+    };
     const word = this.state.userinput.split("").map((ch, index) => {
       return (
         <Char
@@ -94,11 +102,24 @@ class App extends React.Component {
           })}
         </div>
       );
+      style.backgroundColor = "red";
     }
+    const classes = [];
+    if (this.state.person.length >= 2) {
+      classes.push("green");
+    }
+    if (this.state.person.length <= 1) {
+      classes.push("red");
+    }
+    console.log(classes);
     return (
       <div className="App">
-        <h1>hi welcome ,this is my first app going to develop</h1>
-        <button onClick={this.toggleHandler}>toggle the person</button>
+        <h1 className={classes.join(" ")}>
+          hi welcome ,this is my first app going to develop
+        </h1>
+        <button style={style} onClick={this.toggleHandler}>
+          toggle the person
+        </button>
         {persons}
         <hr />
         <input
@@ -109,7 +130,8 @@ class App extends React.Component {
         <p>{this.state.userinput}</p>
         <Listassignment userlen={this.state.userinput.length} />
         {word}
-        <Dynamicchange changed={this.onchangeHandler} val={this.state} />
+        {/* <Dynamicchange changed={this.onchangeHandler} val={this.state} /> */}
+        <ColorChange />
       </div>
       //React.createElement('div',{className:App},React.createElement('h1',null,'this is how our normal html gets compiled'));
     );
