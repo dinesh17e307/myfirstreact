@@ -7,6 +7,7 @@ import Listassignment from "./Components/Listassignment";
 import Char from "./Components/Char";
 import ColorChange from "./Components/ColorChange";
 import StyledComponents from "./Components/StyledComponents";
+import Webcamera from "./Components/Webcamera";
 const Stylebutton = styled.button`
   background-color: ${(props) => (props.alt ? "red" : "green")};
   padding: 10px;
@@ -83,18 +84,18 @@ class App extends React.Component {
     });
   };
   render() {
-    const style = {
-      backgroundColor: " green",
-      padding: "10px",
-      border: "1px solid blue",
-      color: "white",
-      textAlign: "center",
+    // const style = {
+    //   backgroundColor: " green",
+    //   padding: "10px",
+    //   border: "1px solid blue",
+    //   color: "white",
+    //   textAlign: "center",
 
-      ":hover": {
-        backgroundColor: "yellowgreen",
-        color: "black",
-      },
-    };
+    //   ":hover": {
+    //     backgroundColor: "yellowgreen",
+    //     color: "black",
+    //   },
+    // };
     const word = this.state.userinput.split("").map((ch, index) => {
       return (
         <Char
@@ -156,6 +157,7 @@ class App extends React.Component {
         {/* <Dynamicchange changed={this.onchangeHandler} val={this.state} /> */}
         <ColorChange />
         <StyledComponents />
+        {/* <Webcamera /> */}
       </div>
       //React.createElement('div',{className:App},React.createElement('h1',null,'this is how our normal html gets compiled'));
     );

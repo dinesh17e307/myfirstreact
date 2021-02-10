@@ -20,3 +20,6 @@
     font-style: italic;
     cursor: pointer;
 }
+.dis{
+    display: inline-block;
+}
