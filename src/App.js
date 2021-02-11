@@ -1,7 +1,6 @@
-import "./App.css";
 import React from "react";
-import classes from "./App.css";
-import styled from "styled-components";
+import classes from "./App.module.css";
+// import styled from "styled-components";
 import Person from "./Components/Person";
 import Dynamicchange from "./Components/Dynamicchange";
 import Listassignment from "./Components/Listassignment";
@@ -9,18 +8,18 @@ import Char from "./Components/Char";
 import ColorChange from "./Components/ColorChange";
 import StyledComponents from "./Components/StyledComponents";
 import Webcamera from "./Components/Webcamera";
-const Stylebutton = styled.button`
-  background-color: ${(props) => (props.alt ? "red" : "green")};
-  padding: 10px;
-  border: 1px solid blue;
-  color: white;
-  text-align: center;
+// const Stylebutton = styled.button`
+//   background-color: ${(props) => (props.alt ? "red" : "green")};
+//   padding: 10px;
+//   border: 1px solid blue;
+//   color: white;
+//   text-align: center;
 
-  &:hover {
-    background-color: ${(props) => (props.alt ? "maroon" : "yellowgreen")};
-    color: ${(props) => (props.alt ? "yellow" : "black")};
-  }
-`;
+//   &:hover {
+//     background-color: ${(props) => (props.alt ? "maroon" : "yellowgreen")};
+//     color: ${(props) => (props.alt ? "yellow" : "black")};
+//   }
+// `;
 class App extends React.Component {
   state = {
     person: [
@@ -107,6 +106,7 @@ class App extends React.Component {
       );
     });
     let persons = null;
+    let btnclass = "";
     if (this.state.isshown) {
       persons = (
         <div>
@@ -123,6 +123,7 @@ class App extends React.Component {
           })}
         </div>
       );
+      btnclass = classes.Red;
       // style.backgroundColor = "red";
       // style[":hover"] = {
       //   backgroundColor: "maroon",
@@ -134,17 +135,17 @@ class App extends React.Component {
       assignclasses.push(classes.green);
     }
     if (this.state.person.length <= 1) {
-      assignclasses.push("red");
+      assignclasses.push(classes.red);
     }
     console.log(assignclasses);
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1 className={assignclasses.join(" ")}>
           hi welcome ,this is my first app going to develop
         </h1>
-        <Stylebutton alt={this.state.isshown} onClick={this.toggleHandler}>
+        <button className={btnclass} onClick={this.toggleHandler}>
           toggle the person
-        </Stylebutton>
+        </button>
         {persons}
         <hr />
         <input
@@ -158,7 +159,7 @@ class App extends React.Component {
         {/* <Dynamicchange changed={this.onchangeHandler} val={this.state} /> */}
         <ColorChange />
         <StyledComponents />
-        <Webcamera />
+        {/* <Webcamera /> */}
       </div>
       //React.createElement('div',{className:App},React.createElement('h1',null,'this is how our normal html gets compiled'));
     );

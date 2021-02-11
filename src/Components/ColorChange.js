@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css";
+import "../App.module.css";
 class ColorChange extends React.Component {
   state = {
     cls: "red",
