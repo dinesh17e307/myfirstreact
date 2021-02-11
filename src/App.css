@@ -26,3 +26,14 @@
 .display{
   display:grid;
 }
+.Button{
+  background-color: green;
+  padding: 10px;
+  border: 1px solid blue;
+  color: white;
+  text-align: center;
+}
+.Button:hover {
+    background-color:maroon;
+    color: yellow;
+  }

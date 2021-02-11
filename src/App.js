@@ -1,5 +1,6 @@
 import "./App.css";
 import React from "react";
+import classes from "./App.css";
 import styled from "styled-components";
 import Person from "./Components/Person";
 import Dynamicchange from "./Components/Dynamicchange";
@@ -128,17 +129,17 @@ class App extends React.Component {
       //   color: "yellow",
       // };
     }
-    const classes = [];
+    const assignclasses = [];
     if (this.state.person.length >= 2) {
-      classes.push("green");
+      assignclasses.push(classes.green);
     }
     if (this.state.person.length <= 1) {
-      classes.push("red");
+      assignclasses.push("red");
     }
-    console.log(classes);
+    console.log(assignclasses);
     return (
       <div className="App">
-        <h1 className={classes.join(" ")}>
+        <h1 className={assignclasses.join(" ")}>
           hi welcome ,this is my first app going to develop
         </h1>
         <Stylebutton alt={this.state.isshown} onClick={this.toggleHandler}>
@@ -157,7 +158,7 @@ class App extends React.Component {
         {/* <Dynamicchange changed={this.onchangeHandler} val={this.state} /> */}
         <ColorChange />
         <StyledComponents />
-        {/* <Webcamera /> */}
+        <Webcamera />
       </div>
       //React.createElement('div',{className:App},React.createElement('h1',null,'this is how our normal html gets compiled'));
     );
