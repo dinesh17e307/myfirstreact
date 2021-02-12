@@ -1,8 +1,8 @@
 import React from "react";
-import "../App.module.css";
+import clasess from "../App.module.css";
 class ColorChange extends React.Component {
   state = {
-    cls: "red",
+    cls: clasess.red,
   };
   stylish = (e) => {
     this.setState({
@@ -20,7 +20,7 @@ class ColorChange extends React.Component {
       <div>
         <p className={cls.join(" ")}>
           red blue green white yellow largefont{" "}
-          <button onClick={() => this.stylishbut("blue")}>blue</button>
+          <button onClick={() => this.stylishbut("clasess.blue")}>blue</button>
         </p>
         <input type="text" onChange={this.stylish} value={this.state.cls} />
       </div>

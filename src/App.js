@@ -8,6 +8,8 @@ import Char from "./Components/Char";
 import ColorChange from "./Components/ColorChange";
 import StyledComponents from "./Components/StyledComponents";
 import Webcamera from "./Components/Webcamera";
+import Persons from "./Components/Persons";
+import Render from "./Components/Render";
 // const Stylebutton = styled.button`
 //   background-color: ${(props) => (props.alt ? "red" : "green")};
 //   padding: 10px;
@@ -21,6 +23,10 @@ import Webcamera from "./Components/Webcamera";
 //   }
 // `;
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("[App.js constructor");
+  }
   state = {
     person: [
       { id: "1", nam: "dinesh", place: "sathy" },
@@ -33,6 +39,19 @@ class App extends React.Component {
     isshown: true,
     userinput: "type",
   };
+  static getDerivedStateFromProps(props, state) {
+    console.log("[App.js]", props);
+    return state;
+  }
+  // componentWillMount() {
+  //   console.log("[APp.js] components will mount");
+  // }
+  // componentDidUpdate() {
+  //   console.log("[App.js] component did update");
+  // }
+  componentDidMount() {
+    console.log("[App.js]  component did mount");
+  }
   onchangeforpersonHandler = (e, id) => {
     const personindex = this.state.person.findIndex((p) => {
       return p.id === id;
@@ -84,6 +103,7 @@ class App extends React.Component {
     });
   };
   render() {
+    console.log("[App.js] render ");
     // const style = {
     //   backgroundColor: " green",
     //   padding: "10px",
@@ -106,46 +126,22 @@ class App extends React.Component {
       );
     });
     let persons = null;
-    let btnclass = "";
     if (this.state.isshown) {
       persons = (
-        <div>
-          {this.state.person.map((e, indx) => {
-            return (
-              <Person
-                click={() => this.deleteHandler(indx)}
-                key={e.id}
-                names={e.nam}
-                place={e.place}
-                changed={(event) => this.onchangeforpersonHandler(event, e.id)}
-              />
-            );
-          })}
-        </div>
+        <Persons
+          person={this.state.person}
+          clicked={this.deleteHandler}
+          changed={this.onchangeforpersonHandler}
+        />
       );
-      btnclass = classes.Red;
-      // style.backgroundColor = "red";
-      // style[":hover"] = {
-      //   backgroundColor: "maroon",
-      //   color: "yellow",
-      // };
     }
-    const assignclasses = [];
-    if (this.state.person.length >= 2) {
-      assignclasses.push(classes.green);
-    }
-    if (this.state.person.length <= 1) {
-      assignclasses.push(classes.red);
-    }
-    console.log(assignclasses);
     return (
       <div className={classes.App}>
-        <h1 className={assignclasses.join(" ")}>
-          hi welcome ,this is my first app going to develop
-        </h1>
-        <button className={btnclass} onClick={this.toggleHandler}>
-          toggle the person
-        </button>
+        <Render
+          show={this.state.isshown}
+          person={this.state.person}
+          clicked={this.toggleHandler}
+        />
         {persons}
         <hr />
         <input
@@ -158,12 +154,11 @@ class App extends React.Component {
         {word}
         {/* <Dynamicchange changed={this.onchangeHandler} val={this.state} /> */}
         <ColorChange />
-        <StyledComponents />
+        {/* <StyledComponents /> */}
         {/* <Webcamera /> */}
       </div>
       //React.createElement('div',{className:App},React.createElement('h1',null,'this is how our normal html gets compiled'));
     );
   }
 }
-
 export default App;

@@ -1,0 +1,42 @@
+.green{
+    color: green;
+  }
+  .bold{
+    font-weight: bold;
+  }
+  .red{
+    color: blueviolet;
+  }
+  .blue{
+    background-color: brown;
+    color: aliceblue;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid green;
+  }
+  .largefont{
+    font-size: 100px;
+  }
+  .yellow{
+    color: yellowgreen;
+  }
+  .display{
+    display:grid;
+  }
+  .Render button{
+    background-color: green;
+    padding: 10px;
+    border: 1px solid blue;
+    color: white;
+    text-align: center;
+  }
+  .Render button:hover {
+      background-color:maroon;
+      color: yellow;
+    }
+    .Render button.Red{
+      background-color: red;
+    }
+    .Render button.Red:hover{
+      background-color: saddlebrown;
+    }

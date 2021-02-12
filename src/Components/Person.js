@@ -14,16 +14,23 @@ const Styleperson = styled.div`
     width: 450px;
   }
 `;
-const person = (props) => {
-  return (
-    <Styleperson>
-      <p onClick={() => props.click()}>
-        this is {props.names} from {props.place} and my age is{" "}
-        {Math.floor(Math.random() * 50)}{" "}
-      </p>
-      <h1>{props.children}</h1>
-      <input type="text" onChange={props.changed} value={props.names} />
-    </Styleperson>
-  );
-};
-export default person;
+class Person extends React.Component {
+  render() {
+    console.log("[person.js] render ");
+    return (
+      <Styleperson>
+        <p onClick={() => this.props.click()}>
+          this is {this.props.names} from {this.props.place} and my age is{" "}
+          {Math.floor(Math.random() * 50)}{" "}
+        </p>
+        <h1>{this.props.children}</h1>
+        <input
+          type="text"
+          onChange={this.props.changed}
+          value={this.props.names}
+        />
+      </Styleperson>
+    );
+  }
+}
+export default Person;
