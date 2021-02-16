@@ -1,12 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 
 import Person from "./Person";
 
-class Persons extends React.Component {
+class Persons extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("{Persons.js] shouldcomponentupdate", nextProps);
-    if (nextProps !== this.props) return true;
-    else return false;
+    console.log("{Persons.js] shouldcomponentupdate");
+    console.log(this.props.pers);
+    console.log(nextProps.pers);
+    console.log(Object.is(nextProps.pers, this.props.pers));
+    if (!Object.is(nextProps.pers, this.props.pers)) {
+      return true;
+    } else {
+      return false;
+    }
   }
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log("[Persons.js] getsnapshotbeforeupdate", prevProps);
@@ -23,7 +29,7 @@ class Persons extends React.Component {
   }
   render() {
     console.log("[persons.js] render ");
-    return this.props.person.map((e, indx) => {
+    return this.props.pers.map((e, indx) => {
       return (
         <Person
           click={() => this.props.clicked(indx)}

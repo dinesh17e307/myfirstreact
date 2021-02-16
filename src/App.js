@@ -10,6 +10,9 @@ import StyledComponents from "./Components/StyledComponents";
 import Webcamera from "./Components/Webcamera";
 import Persons from "./Components/Persons";
 import Render from "./Components/Render";
+import Google from "./Components/Google";
+import Aux from "./Components/Hoc/auxiliary";
+import withclass from "./Components/Hoc/withclass";
 // const Stylebutton = styled.button`
 //   background-color: ${(props) => (props.alt ? "red" : "green")};
 //   padding: 10px;
@@ -38,17 +41,22 @@ class App extends React.Component {
     date: "",
     isshown: true,
     userinput: "type",
+    isuse: true,
   };
   static getDerivedStateFromProps(props, state) {
-    console.log("[App.js]", props);
+    console.log("[App.js] getderivedstatefromprops", props);
     return state;
   }
   // componentWillMount() {
   //   console.log("[APp.js] components will mount");
   // }
-  // componentDidUpdate() {
-  //   console.log("[App.js] component did update");
-  // }
+  componentDidUpdate() {
+    console.log("[App.js] component did update");
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("[APp.js} should component update");
+    return true;
+  }
   componentDidMount() {
     console.log("[App.js]  component did mount");
   }
@@ -129,19 +137,29 @@ class App extends React.Component {
     if (this.state.isshown) {
       persons = (
         <Persons
-          person={this.state.person}
+          pers={this.state.person}
           clicked={this.deleteHandler}
           changed={this.onchangeforpersonHandler}
         />
       );
     }
     return (
-      <div className={classes.App}>
-        <Render
-          show={this.state.isshown}
-          person={this.state.person}
-          clicked={this.toggleHandler}
-        />
+      <Aux>
+        <button
+          onClick={() => {
+            this.setState({ isuse: false });
+          }}
+        >
+          remove render
+        </button>
+        {this.state.isuse ? (
+          <Render
+            show={this.state.isshown}
+            pers={this.state.person}
+            clicked={this.toggleHandler}
+            personlength={this.state.person.length}
+          />
+        ) : null}
         {persons}
         <hr />
         <input
@@ -149,16 +167,17 @@ class App extends React.Component {
           onChange={this.listtextchangehandler}
           value={this.state.userinput}
         />
-        <p>{this.state.userinput}</p>
+        {/* <p>{this.state.userinput}</p>
         <Listassignment userlen={this.state.userinput.length} />
-        {word}
+        {word} */}
         {/* <Dynamicchange changed={this.onchangeHandler} val={this.state} /> */}
-        <ColorChange />
+        {/* <ColorChange /> */}
         {/* <StyledComponents /> */}
         {/* <Webcamera /> */}
-      </div>
+        {/* <Google /> */}
+      </Aux>
       //React.createElement('div',{className:App},React.createElement('h1',null,'this is how our normal html gets compiled'));
     );
   }
 }
-export default App;
+export default withclass(App, classes.App);

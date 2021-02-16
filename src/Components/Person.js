@@ -1,5 +1,8 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
 import styled from "styled-components";
+import Aux from "./Hoc/auxiliary";
+import withclass from "./Hoc/withclass";
+import propTypes from "prop-types";
 const Styleperson = styled.div`
   background-color: white;
   width: 60%;
@@ -14,23 +17,30 @@ const Styleperson = styled.div`
     width: 450px;
   }
 `;
-class Person extends React.Component {
+class Person extends Component {
   render() {
     console.log("[person.js] render ");
     return (
-      <Styleperson>
-        <p onClick={() => this.props.click()}>
-          this is {this.props.names} from {this.props.place} and my age is{" "}
-          {Math.floor(Math.random() * 50)}{" "}
-        </p>
-        <h1>{this.props.children}</h1>
-        <input
-          type="text"
-          onChange={this.props.changed}
-          value={this.props.names}
-        />
-      </Styleperson>
+      <Fragment>
+        <Styleperson>
+          <p onClick={() => this.props.click()}>
+            this is {this.props.names} from {this.props.place}
+          </p>
+          <h1>{this.props.children}</h1>
+          <input
+            type="text"
+            onChange={this.props.changed}
+            value={this.props.names}
+          />
+        </Styleperson>
+      </Fragment>
     );
   }
 }
-export default Person;
+Person.propTypes = {
+  names: propTypes.string,
+  onChange: propTypes.func,
+  value: propTypes.string,
+  place: propTypes.string,
+};
+export default withclass(Person, Styleperson);
