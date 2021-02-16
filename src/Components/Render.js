@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./Render.module.css";
 function Render(props) {
+  const btnRef = useRef(null);
   useEffect(() => {
     console.log("changed from Render.js");
-    setTimeout(() => {
-      alert("hi welcome");
-    }, 1000);
+    // setTimeout(() => {
+    //   alert("hi welcome");
+    // }, 1000);
+    btnRef.current.click();
     return () => {
       console.log("clean up work in render,js");
     };
@@ -26,7 +28,7 @@ function Render(props) {
       <h1 className={assignclasses.join(" ")}>
         hi welcome ,this is my first app going to develop
       </h1>
-      <button className={btnclass} onClick={props.clicked}>
+      <button ref={btnRef} className={btnclass} onClick={props.clicked}>
         toggle the person
       </button>
     </div>

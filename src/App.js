@@ -100,6 +100,7 @@ class App extends React.Component {
   deleteHandler = (index) => {
     let person = this.state.person;
     person.splice(index, 1);
+    alert("hi");
     this.setState({ persons: person });
   };
   delcharhandler = (ind) => {

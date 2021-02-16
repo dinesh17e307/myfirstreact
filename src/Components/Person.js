@@ -18,10 +18,18 @@ const Styleperson = styled.div`
   }
 `;
 class Person extends Component {
+  constructor(props) {
+    super(props);
+    this.inputref = React.createRef();
+  }
+  componentDidMount = () => {
+    this.inputref.current.focus();
+  };
   render() {
     console.log("[person.js] render ");
+    console.log(this.props.Person);
     return (
-      <Fragment>
+      <Aux>
         <Styleperson>
           <p onClick={() => this.props.click()}>
             this is {this.props.names} from {this.props.place}
@@ -29,18 +37,20 @@ class Person extends Component {
           <h1>{this.props.children}</h1>
           <input
             type="text"
+            ref={this.inputref}
             onChange={this.props.changed}
             value={this.props.names}
           />
         </Styleperson>
-      </Fragment>
+      </Aux>
     );
   }
 }
 Person.propTypes = {
+  click: propTypes.func,
   names: propTypes.string,
   onChange: propTypes.func,
   value: propTypes.string,
   place: propTypes.string,
 };
-export default withclass(Person, Styleperson);
+export default Person;
